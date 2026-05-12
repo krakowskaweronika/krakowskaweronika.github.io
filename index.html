@@ -2,11 +2,165 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Moja Wizytówka</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senior Portfolio | Elegant Pink</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header><h1>Moja Wizytówka - Portfolio</h1></header>
-    <main>Moja wizytówka...</main>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <nav class="glass-nav">
+        <div class="logo">Portfolio<span>.</span></div>
+        <div class="nav-links">
+            <a href="#about" class="nav-item">O mnie</a>
+            <a href="#skills" class="nav-item">Skille</a>
+            <a href="#projects" class="nav-item">Doświadczenie</a>
+            <a href="#contact" class="btn-contact-nav">Kontakt</a>
+        </div>
+    </nav>
+
+    <header class="hero-v2">
+        <div class="hero-content">
+            <span class="badge reveal">Senior Developer</span>
+            <h1 class="reveal delay-1">Buduję <i>cyfrowe</i> doświadczenia</h1>
+            <p class="reveal delay-2">Łączę estetykę pastelowego minimalizmu z czystym kodem.</p>
+            
+            <div class="flex-menu reveal delay-3">
+                <div class="glass-card" onclick="scrollToSection('about')">
+                    <div class="card-icon">01</div>
+                    <h3>O mnie</h3>
+                    <div class="card-line"></div>
+                </div>
+                <div class="glass-card" onclick="scrollToSection('skills')">
+                    <div class="card-icon">02</div>
+                    <h3>Skille</h3>
+                    <div class="card-line"></div>
+                </div>
+                <div class="glass-card" onclick="scrollToSection('projects')">
+                    <div class="card-icon">03</div>
+                    <h3>Projekty</h3>
+                    <div class="card-line"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image-wrapper reveal slide-left">
+                        <div class="image-experience-badge">
+                            <span class="years">10+</span>
+                            <span class="text">Lat exp</span>
+                        </div>
+                        <div class="image-frame"></div>
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Profile">
+                    </div>
+
+                    <div class="about-text-content">
+                        <span class="section-subtitle reveal">Moja historia</span>
+                        <h2 class="reveal slide-up">Architekt rozwiązań z <i>pasją</i> do designu.</h2>
+                        <p class="reveal slide-up delay-1">
+                            Jako Senior Developer, projektuję skalowalne systemy. Moje podejście opiera się na <strong>czystej architekturze</strong> i dbałości o User Experience.
+                        </p>
+                        
+                        <div class="stats-row reveal slide-up delay-2">
+                            <div class="stat-item">
+                                <h4 class="counter" data-target="150">0</h4>
+                                <p>Projektów</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4 class="counter" data-target="40">0</h4>
+                                <p>Klientów</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <span class="section-subtitle reveal">Ekspertyza</span>
+                <h2 class="reveal slide-up">Technologie, w których <i>tworzę</i></h2>
+                
+                <div class="skills-flex reveal delay-1">
+                    <div class="skill-group">
+                        <h3>Frontend</h3>
+                        <div class="skill-tags">
+                            <span class="tag">HTML5 / CSS3</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">TypeScript</span>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <h3>Design & Tools</h3>
+                        <div class="skill-tags">
+                            <span class="tag">Figma</span><span class="tag">Git</span><span class="tag">Agile</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <span class="section-subtitle reveal">Portfolio</span>
+                <h2 class="reveal slide-up">Moje <i>doświadczenie</i></h2>
+                
+                <div class="projects-list">
+                    <div class="project-item reveal slide-up">
+                        <div class="project-date">2022 - Obecnie</div>
+                        <div class="project-info">
+                            <h3>Lead Frontend Developer</h3>
+                            <p>Global Tech Solutions — Budowa skalowalnych systemów CRM w React i Next.js.</p>
+                        </div>
+                    </div>
+                    <div class="project-item reveal slide-up delay-1">
+                        <div class="project-date">2019 - 2022</div>
+                        <div class="project-info">
+                            <h3>Senior UI Engineer</h3>
+                            <p>Creative Studio — Projektowanie i wdrażanie interaktywnych interfejsów dla branży e-commerce.</p>
+                        </div>
+                    </div>
+                    <div class="project-item reveal slide-up delay-2">
+                        <div class="project-date">2016 - 2019</div>
+                        <div class="project-info">
+                            <h3>Fullstack Developer</h3>
+                            <p>StartUp Hub — Rozwój aplikacji mobilnych i webowych od fazy MVP do gotowego produktu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-card reveal">
+                    <span class="section-subtitle">Kontakt</span>
+                    <h2>Zróbmy coś <i>razem</i></h2>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Twoje Imię" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Twój Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Twoja wiadomość" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Wyślij wiadomość</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Projekt Moja Wizytówka. Wykonano z elegancją.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
