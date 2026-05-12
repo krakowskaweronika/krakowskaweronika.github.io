@@ -16,8 +16,8 @@
         <div class="nav-links">
             <a href="#about" class="nav-item">O mnie</a>
             <a href="#skills" class="nav-item">Skille</a>
-            <a href="#projects" class="nav-item">Projekty</a>
-            <a href="#contact" class="btn-contact">Kontakt</a>
+            <a href="#projects" class="nav-item">Doświadczenie</a>
+            <a href="#contact" class="btn-contact-nav">Kontakt</a>
         </div>
     </nav>
 
@@ -91,28 +91,75 @@
                     <div class="skill-group">
                         <h3>Frontend</h3>
                         <div class="skill-tags">
-                            <span class="tag">HTML5 / CSS3</span>
-                            <span class="tag">JavaScript (ES6+)</span>
-                            <span class="tag">React / Next.js</span>
-                            <span class="tag">TypeScript</span>
+                            <span class="tag">HTML5 / CSS3</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">TypeScript</span>
                         </div>
                     </div>
                     <div class="skill-group">
                         <h3>Design & Tools</h3>
                         <div class="skill-tags">
-                            <span class="tag">Figma</span>
-                            <span class="tag">Git / GitHub</span>
-                            <span class="tag">Agile</span>
+                            <span class="tag">Figma</span><span class="tag">Git</span><span class="tag">Agile</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" style="height: 50vh; text-align: center; padding: 100px;">
-            <h2 class="reveal">Sekcja Projekty (Wkrótce...)</h2>
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <span class="section-subtitle reveal">Portfolio</span>
+                <h2 class="reveal slide-up">Moje <i>doświadczenie</i></h2>
+                
+                <div class="projects-list">
+                    <div class="project-item reveal slide-up">
+                        <div class="project-date">2022 - Obecnie</div>
+                        <div class="project-info">
+                            <h3>Lead Frontend Developer</h3>
+                            <p>Global Tech Solutions — Budowa skalowalnych systemów CRM w React i Next.js.</p>
+                        </div>
+                    </div>
+                    <div class="project-item reveal slide-up delay-1">
+                        <div class="project-date">2019 - 2022</div>
+                        <div class="project-info">
+                            <h3>Senior UI Engineer</h3>
+                            <p>Creative Studio — Projektowanie i wdrażanie interaktywnych interfejsów dla branży e-commerce.</p>
+                        </div>
+                    </div>
+                    <div class="project-item reveal slide-up delay-2">
+                        <div class="project-date">2016 - 2019</div>
+                        <div class="project-info">
+                            <h3>Fullstack Developer</h3>
+                            <p>StartUp Hub — Rozwój aplikacji mobilnych i webowych od fazy MVP do gotowego produktu.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="contact-card reveal">
+                    <span class="section-subtitle">Kontakt</span>
+                    <h2>Zróbmy coś <i>razem</i></h2>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Twoje Imię" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Twój Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Twoja wiadomość" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Wyślij wiadomość</button>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
+
+    <footer class="footer">
+        <p>© 2026 Projekt Moja Wizytówka. Wykonano z elegancją.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

@@ -1,4 +1,4 @@
-// Dynamiczne tło (Canvas)
+// --- CANVAS: Dynamiczne tło ---
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
@@ -13,14 +13,16 @@ class Particle {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.size = Math.random() * 2 + 1;
-        this.speedX = Math.random() * 0.4 - 0.2;
-        this.speedY = Math.random() * 0.4 - 0.2;
+        this.speedX = Math.random() * 0.3 - 0.15;
+        this.speedY = Math.random() * 0.3 - 0.15;
     }
     update() {
         this.x += this.speedX;
         this.y += this.speedY;
         if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
         if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
     }
     draw() {
         ctx.fillStyle = 'rgba(240, 98, 146, 0.15)';
@@ -32,50 +34,121 @@ class Particle {
 
 function createParticles() {
     particles = [];
-    const count = window.innerWidth < 768 ? 30 : 70;
-    for (let i = 0; i < count; i++) particles.push(new Particle());
+    const count = window.innerWidth < 768 ? 30 : 80;
+    for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+    }
 }
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
+    particles.forEach(p => {
+        p.update();
+        p.draw();
+    });
     requestAnimationFrame(animate);
 }
 
-// Obsługa Scroll Reveal
-const observer = new IntersectionObserver((entries) => {
+// --- LICZNIKI (Stats Counter) ---
+function startCounters() {
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const speed = 2000 / target; // Czas animacji to ok. 2 sekundy
+
+        const updateCount = () => {
+            const current = +counter.innerText;
+            if (current < target) {
+                counter.innerText = Math.ceil(current + 1);
+                setTimeout(updateCount, speed);
+            } else {
+                counter.innerText = target + "+";
+            }
+        };
+
+        if (count === 0) updateCount();
+    });
+}
+
+// --- INTERSECTION OBSERVER (Animacje pojawiania się) ---
+const observerOptions = {
+    threshold: 0.15
+};
+
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('active');
-            if (entry.target.querySelector('.counter')) startCounters();
+            // Jeśli element zawiera licznik, uruchom go
+            if (entry.target.querySelector('.counter')) {
+                startCounters();
+            }
         }
     });
-}, { threshold: 0.1 });
+}, observerOptions);
 
-// Start funkcji
-window.addEventListener('resize', initCanvas);
+// --- SMOOTH SCROLL (Płynne przewijanie) ---
+function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (element) {
+        const headerOffset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+        });
+    }
+}
+
+// --- NAV EFFECT (Zmiana tła nav przy skrolowaniu) ---
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.glass-nav');
+    if (window.scrollY > 50) {
+        nav.style.padding = '10px 35px';
+        nav.style.background = 'rgba(255, 255, 255, 0.8)';
+    } else {
+        nav.style.padding = '15px 35px';
+        nav.style.background = 'rgba(255, 255, 255, 0.45)';
+    }
+});
+
+// --- FORMULARZ KONTAKTOWY ---
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = contactForm.querySelector('.btn-submit');
+        const originalText = btn.innerText;
+        
+        // Symulacja wysyłania
+        btn.innerText = "Wysyłanie...";
+        btn.style.opacity = "0.7";
+        btn.disabled = true;
+
+        setTimeout(() => {
+            alert('Dziękuję za wiadomość! Odezwę się wkrótce.');
+            btn.innerText = originalText;
+            btn.style.opacity = "1";
+            btn.disabled = false;
+            contactForm.reset();
+        }, 1500);
+    });
+}
+
+// --- INICJALIZACJA ---
 initCanvas();
 createParticles();
 animate();
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+window.addEventListener('resize', () => {
+    initCanvas();
+    createParticles();
+});
 
-function scrollToSection(id) {
-    const el = document.getElementById(id);
-    window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
-}
-
-function startCounters() {
-    document.querySelectorAll('.counter').forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        const update = () => {
-            const count = +counter.innerText;
-            const inc = target / 50;
-            if (count < target) {
-                counter.innerText = Math.ceil(count + inc);
-                setTimeout(update, 30);
-            } else counter.innerText = target;
-        };
-        update();
-    });
-}
+// Podpięcie observera pod wszystkie elementy .reveal
+document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+});
