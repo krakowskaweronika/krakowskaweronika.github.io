@@ -3,48 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moja Wizytówka</title>
+    <title>Senior Portfolio | Personal Brand</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <canvas id="bg-canvas"></canvas>
 
-    <nav class="navbar">
-        <div class="logo">Portfolio</div>
-        <ul class="nav-links">
-            <li><a href="#about">O mnie</a></li>
-            <li><a href="#skills">Umiejętności</a></li>
-            <li><a href="#projects">Projekty</a></li>
-            <li><a href="#contact">Kontakt</a></li>
-        </ul>
+    <nav class="glass-nav">
+        <div class="logo">Portfolio<span>.</span></div>
+        <div class="nav-links">
+            <a href="#about" class="nav-item">O mnie</a>
+            <a href="#skills" class="nav-item">Skille</a>
+            <a href="#projects" class="nav-item">Projekty</a>
+            <a href="#contact" class="btn-contact">Kontakt</a>
+        </div>
     </nav>
 
-    <header class="hero">
-        <h1>Witaj w moim świecie</h1>
-        
-        <div class="tile-container">
-            <div class="tile" onclick="scrollToSection('about')">
-                <h3>O mnie</h3>
-                <p>Poznaj moją historię</p>
-            </div>
-            <div class="tile" onclick="scrollToSection('skills')">
-                <h3>Umiejętności</h3>
-                <p>To, co robię najlepiej</p>
-            </div>
-            <div class="tile" onclick="scrollToSection('projects')">
-                <h3>Projekty</h3>
-                <p>Moje doświadczenie</p>
-            </div>
-            <div class="tile" onclick="scrollToSection('contact')">
-                <h3>Kontakt</h3>
-                <p>Napisz do mnie</p>
+    <section class="hero-v2">
+        <div class="hero-content">
+            <span class="badge">Senior Developer / Designer</span>
+            <h1>Buduję <i>cyfrowe</i> doświadczenia</h1>
+            <p>Łączę estetykę pastelowego minimalizmu z czystym, wydajnym kodem.</p>
+            
+            <div class="grid-menu">
+                <div class="glass-card" data-target="about">
+                    <div class="card-icon">01</div>
+                    <h3>O mnie</h3>
+                    <div class="card-line"></div>
+                </div>
+                <div class="glass-card" data-target="skills">
+                    <div class="card-icon">02</div>
+                    <h3>Skille</h3>
+                    <div class="card-line"></div>
+                </div>
+                <div class="glass-card" data-target="projects">
+                    <div class="card-icon">03</div>
+                    <h3>Projekty</h3>
+                    <div class="card-line"></div>
+                </div>
             </div>
         </div>
-    </header>
-
-    <main>
-        <section id="about" style="height: 50vh; padding: 50px;"><h2>O mnie</h2><p>Sekcja w przygotowaniu...</p></section>
-    </main>
+    </section>
 
     <script src="script.js"></script>
 </body>
